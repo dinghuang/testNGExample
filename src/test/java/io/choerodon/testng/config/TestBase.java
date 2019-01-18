@@ -45,6 +45,7 @@ public class TestBase {
         if (ENABLE) {
             Reporter.log("Parse profile.....", true);
             TestConfigure testConfigure = TestConfigureParse.getConfigure();
+            Reporter.log(testConfigure.toString());
             Assert.assertNotEquals(testConfigure.getDomainUri(), null, "The domainUri cannot be empty");
             Assert.assertNotEquals(testConfigure.getApiGateway(), null, "The apiGateWay cannot be empty");
             RestAssured.baseURI = testConfigure.getApiGateway();

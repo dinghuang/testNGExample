@@ -4,9 +4,7 @@ import io.choerodon.testng.config.domain.TestConfigure;
 import org.testng.Reporter;
 import org.yaml.snakeyaml.Yaml;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.net.URL;
 
 /**
@@ -31,10 +29,17 @@ public class TestConfigureParse {
                 if (url == null) {
                     throw new IllegalArgumentException("The configuration file configure.yaml could not be found");
                 } else {
-                    String filePath = url.getPath();
                     try {
-                        FileInputStream fileInputStream = new FileInputStream(new File(filePath));
-                        testConfigure = yaml.loadAs(fileInputStream, TestConfigure.class);
+                        String filePath = url.getPath();
+                        File file = new File(filePath);
+                        if(file.exists()){
+                            FileInputStream fileInputStream = new FileInputStream(file);
+                            testConfigure = yaml.loadAs(fileInputStream, TestConfigure.class);
+                        }else{
+                            //jar包中读取
+                            InputStream inputStream = TestConfigureParse.class.getClassLoader().getResourceAsStream(FILE_NAME);
+                            testConfigure = yaml.loadAs(inputStream, TestConfigure.class);
+                        }
                     } catch (FileNotFoundException e) {
                         Reporter.log("The configuration file configure.yaml could not be found" + e, true);
                     }
