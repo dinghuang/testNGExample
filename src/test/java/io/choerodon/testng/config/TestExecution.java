@@ -13,8 +13,6 @@ import java.net.URLDecoder;
  */
 public class TestExecution {
 
-    private static final String JAR_NAME = "/app-fat-tests.jar";
-
 
     public static void main(String[] args) {
         URL url = TestExecution.class.getProtectionDomain().getCodeSource().getLocation();
@@ -25,11 +23,8 @@ public class TestExecution {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // 可执行jar包运行的结果里包含".jar"
-        filePath = filePath.substring(0, filePath.lastIndexOf("/") + 1);
-        Reporter.log(filePath);
         TestNG testNG = new TestNG();
-        testNG.setTestJar(filePath + JAR_NAME);
+        testNG.setTestJar(filePath);
         testNG.initializeSuitesAndJarFile();
         testNG.run();
     }
