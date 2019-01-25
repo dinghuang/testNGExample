@@ -1,4 +1,4 @@
-package io.choerodon.testng.config;
+package io.choerodon.testng.config.util;
 
 import io.choerodon.testng.config.domain.TestConfigure;
 import org.testng.Reporter;

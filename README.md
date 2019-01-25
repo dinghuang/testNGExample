@@ -10,11 +10,9 @@
 
 运行命令
 ```sh run.sh```
-进行测试，报告存在于``/target/surefire-reports``下。
+进行测试，报告存在于``/target/test-output``下。
 
-#### 打包运行
-```
-mvn package
-java -jar ./target/app-fat-tests.jar
-```
-报告存在于``test-output``文件夹下
+现在支持多个testSuit执行，同时会在报告中打印输入参数，期望值等信息。
+输入参数在报告``testng-results.xml``中的``<![CDATA[[INPUT]``开头的标签注解
+期望值在报告``testng-results.xml``中的``<![CDATA[[EXPECT]``开头的标签注解
+失败信息会展示在``message``标签中

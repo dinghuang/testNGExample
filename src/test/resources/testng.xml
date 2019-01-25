@@ -1,15 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Sanity Suite">
-    <test name="testConfigure" parallel="false">
-        <classes>
-            <class name="io.choerodon.testng.config.TestBase"/>
-            <class name="io.choerodon.testng.test.ApiTest">
-                <methods>
-                    <include name="queryWiki"/>
-                    <include name="queryOther"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="-">
+    <suite-files >
+        <!--模块1-->
+        <suite-file path="suite/suite1.xml"></suite-file>
+        <!--模块2-->
+        <suite-file path="suite/suite2.xml"></suite-file>
+    </suite-files>
 </suite>

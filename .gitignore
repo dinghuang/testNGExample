@@ -24,3 +24,4 @@ target/
 app.jar
 .DS_Store
 /test-output
+app-tests.jar
